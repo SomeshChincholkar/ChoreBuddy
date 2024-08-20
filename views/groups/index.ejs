@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/indexGroup.css">
+    <title>Groups</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/tasks">Home</a></li>
+        <li><a href="/groups">Group Tasks</a></li>
+        <li><a href="/calendar">Calendar</a></li>
+    </ul>
+</nav>
+
+<div class="groups-list">
+    <h2>Your Groups</h2>
+
+    <% if (userGroups.length === 0) { %>
+        <p>You are not a member of any groups.</p>
+        <a href="/groups/new">
+            <button class="add-group" type="button">Create a New Group</button>
+        </a>
+    <% } else { %>
+        <ul>
+            <% userGroups.forEach(group => { %>
+                <li>
+                    <a href="/groups/<%= group._id %>"><%= group.name %></a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+</div>
+
+</body>
+</html>

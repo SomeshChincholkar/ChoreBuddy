@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/showGroup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Group Details</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/tasks">Home</a></li>
+        <li><a href="/groups">Group Tasks</a></li>
+        <li><a href="/calendar">Calendar</a></li>
+    </ul>
+</nav>
+
+<div class="group-details">
+    <h2><%= group.name %></h2>
+
+    <h3>Group Members:</h3>
+    <ul>
+        <% group.members.forEach(member => { %>
+            <li><%= member.username %></li>
+        <% }) %>
+    </ul>
+
+    <h3>Tasks for Group Members:</h3>
+    <% if (tasks.length === 0) { %>
+        <p>No tasks found for group members.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Assigned To</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% tasks.forEach(task => { %>
+                    <tr>
+                        <td><%= task.assignedTo.username %></td>
+                        <td><%= task.title %></td>
+                        <td><%= task.description %></td>
+                        <td><%= task.priority %></td>
+                        <td><%= task.taskStatus %></td>
+                        <td><%= task.createdAt.toLocaleString() %></td>
+                        <td><%= task.dueDate.toLocaleString() %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+    
+    <a href="/groups/<%= group._id %>/addTask">
+        <button type="button">Add task to a member</button>
+    </a>    
+
+    <% if (group.admin._id.equals(userId)) { %>
+        <a href="/groups/<%= group._id %>/edit">
+            <button type="button">Add New Members</button>
+        </a>
+    <% } %>
+
+    <a href="/calendar">
+        <button type="button">View Calendar</button>
+    </a>    
+
+    <a href="/groups">
+        <button type="button">Back to Groups</button>
+    </a>
+
+
+</div>
+
+
+</body>
+</html>

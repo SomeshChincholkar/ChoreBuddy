@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="/css/calendar.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/tasks">Home</a></li>
+            <li><a href="/groups">Group Tasks</a></li>
+            <li><a href="/calendar">Calendar</a></li>
+        </ul>
+    </nav>
+        
+    <h1>Task Calendar</h1>
+    <div id="calendar"></div>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            
+            const events = <%- JSON.stringify(tasks.map(task => ({
+                title: task.title,
+                start: task.dueDate,
+                description: task.description,
+                extendedProps: {
+                    priority: task.priority,
+                    status: task.taskStatus
+                }
+            }))) %>;
+
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: events,
+                eventClick: function(info) {
+                    alert('Task: ' + info.event.title + '\n' +
+                          'Description: ' + info.event.extendedProps.description + '\n' +
+                          'Priority: ' + info.event.extendedProps.priority + '\n' +
+                          'Status: ' + info.event.extendedProps.status);
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
+</body>
+</html>

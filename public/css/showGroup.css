@@ -1,0 +1,109 @@
+/* General Styles */
+body {
+    background-color: #f0f8ff;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navigation Styles */
+nav {
+    width: 100%;
+    background-color: #007bff;
+    padding: 10px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: large;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Group Details Styles */
+.group-details {
+    width: 80%;
+    max-width: 800px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.group-details h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.group-details h3 {
+    font-size: 22px;
+    margin-top: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    color: #007bff;
+}
+
+.group-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.group-details ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.group-details ul li span {
+    display: block;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Buttons */
+.group-details button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Add margin for spacing */
+    margin-top: 20px; /* Add margin for spacing from content above */
+}
+
+.group-details button:hover {
+    background-color: #0056b3;
+}
+
+/* Back to Groups Button */
+.group-details a button {
+    background-color: #007bff; /* Grey background */
+}
+
+.group-details a button:hover {
+    background-color: #007bff; /* Darker grey on hover */
+}

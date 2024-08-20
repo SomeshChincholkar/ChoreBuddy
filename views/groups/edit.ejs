@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/editGroup.css">
+    <title>Edit Group</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/tasks">Home</a></li>
+        <li><a href="/groups">Group Tasks</a></li>
+        <li><a href="#">Calendar</a></li>
+    </ul>
+</nav>
+
+<div class="edit-group">
+    <h2>Edit Group: <%= group.name %></h2>
+
+    <form action="/groups/<%= group._id %>?_method=PUT" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <label for="name">Group Name:</label>
+        <input type="text" id="name" name="name" value="<%= group.name %>" required>
+    
+        <h3>Add New Members:</h3>
+        <label for="newMembers">Enter usernames (comma-separated):</label>
+        <input type="text" id="newMembers" name="newMembers" placeholder="user1, user2, ...">
+    
+        <button type="submit">Update Group</button>
+    </form>
+    
+
+    <a href="/groups/<%= group._id %>">
+        <button type="button">Back to Group Details</button>
+    </a>
+</div>
+
+</body>
+</html>

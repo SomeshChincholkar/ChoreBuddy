@@ -1,0 +1,98 @@
+/* General Styles */
+body {
+    background-color: #f0f8ff;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navigation Styles */
+nav {
+    width: 100%;
+    background-color: #007bff;
+    padding: 10px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: large;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Create Group Styles */
+.create-group {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-group h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.create-group form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-group label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.create-group input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.create-group button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Add margin for spacing */
+}
+
+.create-group button:hover {
+    background-color: #0056b3;
+}
+
+/* Back to Groups Button */
+.create-group a button {
+    background-color: #6c757d; /* Grey background */
+}
+
+.create-group a button:hover {
+    background-color: #5a6268; /* Darker grey on hover */
+}

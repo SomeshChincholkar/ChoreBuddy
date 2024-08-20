@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Chore Buddy</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/tasks">Home</a></li>
+        <li><a href="/groups">Group Tasks</a></li>
+        <li><a href="/calendar">Calendar</a></li>
+    </ul>
+</nav>
+
+<div class="myTasks">
+    <h2>Your Tasks</h2>
+    <div class="task-header">
+        <span>Task</span>
+        <span>Task Status</span>
+        <span>Due Date</span>
+    </div>
+
+    <% for(let task of tasks.filter(t => t.taskStatus !== 'Completed')) { %>
+        <div class="task-item" id="task-<%= task._id %>">
+            <li><a href="/tasks/<%= task._id %>/edit"><%= task.title %></a></li>
+            <li><%= task.taskStatus %></li>
+            <li><%= task.dueDate.toLocaleString() %></li>
+        </div>
+    <% } %>        
+
+    <div class="completed-tasks">
+        <h3>Completed Tasks</h3>
+        <% for(let task of tasks.filter(t => t.taskStatus === 'Completed')) { %>
+            <div class="task-item" id="task-<%= task._id %>">
+                <li><a href="/tasks/<%= task._id %>/edit"><%= task.title %></a></li>
+                <li><%= task.taskStatus %></li>
+                <li><%= task.dueDate.toLocaleString() %></li>
+                <form method="POST" action="/tasks/<%=task._id%>?_method=DELETE" class="delete-form">
+                    <button type="submit" class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>                
+            </div>
+        <% } %>         
+    </div>
+</div>
+
+<div class="add-task">
+    <a href="/tasks/new">
+        <button type="button">Add New Task</button>
+    </a>
+</div>
+
+<div class="add-group">
+    <a href="/groups/new">
+        <button type="button">Create Your Own New Group</button>
+    </a>
+</div>
+
+<% if (userId) { %>          <!-- Check if user is logged in -->
+    <div class="logout-container">
+        <form method="GET" action="/logout" class="logout-form">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+<% } %>
+
+</body>
+</html>
