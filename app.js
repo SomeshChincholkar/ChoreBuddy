@@ -35,7 +35,7 @@ const MongoStore = require("connect-mongo")
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     crypto: {
-      secret: process.env.SECRECT
+      secret: process.env.SECRET
     },
     touchAfter: 24 * 3600                 // in seconds, so it is 1 day
   })
@@ -46,7 +46,7 @@ const store = MongoStore.create({
   
   const sessionOptions = {
     store,
-    secret: process.env.SECRECT,
+    secret: process.env.SECRET,
     resave: false,
     saveUnintialized: true,
     cookie: {
